@@ -1,5 +1,23 @@
 extends layout
 
 block content
-	h1= title
-	p Welcome to #{title}
+	div.row
+		div.span4
+			h3.title Welcome to #{title}
+			table.table.stat-table
+				tbody
+					tr
+						td.value 789
+						td.full Visits Today
+					tr
+						td.value 634
+						td.full Unique Visits
+					tr
+						td.value 13
+						td.full Pending Comments
+					tr
+						td.value 17
+						td.full Support Requests
+		div.span8
+			h3.title Cpu Stats
+			div#graph-cpu

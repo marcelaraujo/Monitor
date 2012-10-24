@@ -1,18 +1,12 @@
 {
-  "name": "ipx-monitor",
+  "name": "application-name",
   "version": "0.0.1",
-  "author" : "Marcel Araujo <admin@marcelaraujo.me>",
-  "description": "hello world test app",
   "private": true,
-  "engine": "node >= 0.8.0"
   "scripts": {
     "start": "node app"
   },
   "dependencies": {
-    "express": "3.x",
-    "jade": "*",
-    "socket.io": "*",
-    "hiredis": "*"
-    "redis": "*",
+    "express": "3.0.0",
+    "jade": "*"
   }
 }

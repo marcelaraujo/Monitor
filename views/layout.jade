@@ -22,8 +22,41 @@ html(class="no-js", lang="en")
 		meta(name="apple-mobile-web-app-capable", content="yes")
 		
 		link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,800")
+		link(rel="stylesheet", href="/resources/css/font-awesome.css")
+		//if IE 7
+			link(rel="stylesheet", href="/resources/css/font-awesome-ie7.css")
 		link(rel="stylesheet", href="/resources/css/bootstrap.min.css")
 		link(rel="stylesheet", href="/resources/css/bootstrap-responsive.min.css")
+		link(rel="stylesheet", href="/resources/css/application.css")
+		
+		script(type="text/javascript", charset="utf-8", src="/resources/js/modernizr-2.6.2.min.js")
 	body
-		block content
+		
+		div#wrapper
+			div#header
+				div.container
+					a.brand(href="http://blog.marcelaraujo.me:3000") Dashboard Admin
+					a.btn-navbar(href="javascript:return false;", data-toggle="collapse", data-target=".nav-collapse")
+						i.icon-reorder
+					div.nav-collapse
+						ul#main-nav.nav.pull-right
+							li.nav-icon.active
+								a(href="http://blog.marcelaraujo.me:3000")
+									i.icon-home
+									span Home
+			div#content
+				block content
+		div#footer
+			div.container
+				div.row
+					div.span6
+						| &copy;2012&nbsp;
+						a(href="http://blog.marcelaraujo.me:3000") Marcel Araujo
+						| &nbsp;all rights reserved.
+					div#builtby.span6
+						| Built by&nbsp;
+						a(href="http://blog.marcelaraujo.me:3000") Marcel Araujo
+		
+		script(type="text/javascript", charset="utf-8", src="/resources/js/excanvas.min.js")
+		script(type="text/javascript", charset="utf-8", src="/resources/js/jquery.min.js")
 		script(type="text/javascript", charset="utf-8", src="/resources/js/bootstrap.min.js")

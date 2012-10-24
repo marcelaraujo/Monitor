@@ -3,6 +3,7 @@
   "version": "0.1.3",
   "author": "Marcel Araujo <admin@marcelaraujo.me>",
   "description": "Application to show server status",
+  "repository": "git://github.com/marcelaraujo/Monitor.git",
   "private": true,
   "engines": {
   	"node": "*"

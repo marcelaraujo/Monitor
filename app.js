@@ -9,25 +9,24 @@ var express = require('express'),
 
 var app = express();
 
+var root = __dirname;
+
 app.configure(function () {
     app.set('port', process.env.PORT || 3000);
-    app.set('views', __dirname + '/views');
-    app.set('view options', {
-        pretty: true
-    });
+    app.set('views', root + '/views');
     app.set('view engine', 'jade');
     app.use(express.favicon());
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.cookieParser());
     app.use(express.cookieSession({
-        secret: 'asd98ua0sdu0as9ud0a8sd87h2378hd283h8ash9das',
+        secret: 'j089asjd09a8sjd98asjd908sjad7h8q7e7qwe97agdasidh3',
         cookie: {
             maxAge: 60 * 60 * 1000
         }
     }));
     app.use(express.methodOverride());
-    app.use(express.static(path.join(__dirname, 'public')));
+    app.use(express.static(path.join(root, 'public')));
     app.use(app.router);
 });
 

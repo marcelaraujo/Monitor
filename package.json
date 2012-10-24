@@ -16,15 +16,5 @@
     "hiredis": "*",
     "redis": "*",
     "socket.io": "*"
-  },
-  "keywords": [
-    "monitor",
-    "status",
-    "framework",
-    "realtime",
-    "web",
-    "socket",
-    "app"
-  ],
-  "repository": "git://github.com/marcelaraujo/Monitor.git",
+  }
 }

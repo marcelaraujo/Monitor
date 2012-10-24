@@ -4,6 +4,9 @@
   "author": "Marcel Araujo <admin@marcelaraujo.me>",
   "description": "Application to show server status",
   "private": true,
+  "engines": {
+  	"node": "*"
+  },
   "scripts": {
     "start": "node app"
   },
@@ -13,5 +16,15 @@
     "hiredis": "*",
     "redis": "*",
     "socket.io": "*"
-  }
+  },
+  "keywords": [
+    "monitor",
+    "status",
+    "framework",
+    "realtime",
+    "web",
+    "socket",
+    "app"
+  ],
+  "repository": "git://github.com/marcelaraujo/Monitor.git",
 }

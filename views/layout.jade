@@ -1,7 +1,29 @@
 doctype 5
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+//if lt IE 7
+	html(class="no-js lt-ie9 lt-ie8 lt-ie7", lang="en")
+//if IE 7
+	html(class="no-js lt-ie9 lt-ie8", lang="en")
+//if IE 8
+	html(class="no-js lt-ie9", lang="en")
+// [if gt IE 8] <!
+html(class="no-js", lang="en")
+	// <![endif]
+	head
+		title= title
+		
+		meta(charset="utf-8")
+		meta(name="description", content="")
+		meta(name="author", content="")
+		meta(name="HandheldFriendly", content="True")
+		meta(name="MobileOptimized", content="320")
+		meta(name="apple-mobile-web-app-capable", content="yes")
+		meta(name="apple-mobile-web-app-status-bar-style", content="black")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+		meta(name="apple-mobile-web-app-capable", content="yes")
+		
+		link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,800")
+		link(rel="stylesheet", href="/resources/css/bootstrap.min.css")
+		link(rel="stylesheet", href="/resources/css/bootstrap-responsive.min.css")
+	body
+		block content
+		script(type="text/javascript", charset="utf-8", src="/resources/js/bootstrap.min.js")

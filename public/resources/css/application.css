@@ -2075,10 +2075,10 @@ Layout: Content
 ------------------------------------------------------------------- */
 #content {
   margin-top: 3em;
-  margin-bottom: 8em;
+  /*margin-bottom: 8em;*/
 }
 #content .row {
-  margin-top: 5em;
+  margin-top: 1.5em;
 }
 #content .row:first-child {
   margin-top: 0;

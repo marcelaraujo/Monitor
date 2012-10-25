@@ -4,6 +4,9 @@ block content
 	div.row
 		div.span4
 			h3.title Welcome to #{title}
+			p You are current ly signed up to the Free Trial Plan.
+				br
+				a(href="javascript:return false;") Upgrade your plan today
 			table.table.stat-table
 				tbody
 					tr
@@ -21,3 +24,10 @@ block content
 		div.span8
 			h3.title Cpu Stats
 			div#graph-cpu
+	div.row
+		div.span4
+			h3.title Memory Usage
+			div#graph-memory
+		div.span8
+			h3.title Apache Requests
+			div#graph-requests

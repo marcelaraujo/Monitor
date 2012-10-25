@@ -28,10 +28,12 @@ html(class="no-js", lang="en")
 			link(rel="stylesheet", href="/resources/css/font-awesome-ie7.css")
 		link(rel="stylesheet", href="/resources/css/bootstrap.min.css")
 		link(rel="stylesheet", href="/resources/css/bootstrap-responsive.min.css")
+		link(rel="stylesheet", href="/resources/css/msgGrowl.css")
 		link(rel="stylesheet", href="/resources/css/application.css")
 		
 		script(type="text/javascript", charset="utf-8", src="/resources/js/modernizr-2.6.2.min.js")
-		
+		script(type="text/javascript", charset="utf-8")
+			var baseUrl = "#{baseUrl}";
 	body
 		div#wrapper
 			div#header
@@ -59,8 +61,10 @@ html(class="no-js", lang="en")
 						| Built by&nbsp;
 						a(href="http://blog.marcelaraujo.me:3000") Marcel Araujo
 		
+		script(type="text/javascript", charset="utf-8", src="/socket.io/socket.io.js")
 		script(type="text/javascript", charset="utf-8", src="/resources/js/excanvas.min.js")
 		script(type="text/javascript", charset="utf-8", src="/resources/js/jquery.min.js")
 		script(type="text/javascript", charset="utf-8", src="/resources/js/bootstrap.min.js")
+		script(type="text/javascript", charset="utf-8", src="/resources/js/msgGrowl.min.js")
 		script(type="text/javascript", charset="utf-8", src="/resources/js/ext-all.js")
 		script(type="text/javascript", charset="utf-8", src="/resources/js/app.js")

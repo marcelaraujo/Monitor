@@ -6,6 +6,7 @@ var os = require('os'),
 var Cpu = function( interval ) {
 	events.EventEmitter.call(this);
 	
+	var me = this;
 	var cores = [];
 	
 	var parseDouble = function parseDouble(value) {
@@ -63,13 +64,15 @@ var Cpu = function( interval ) {
 				out.push( p );
 			}
 			
-			this.emit("message", out);
+			me.emit("message", out);
 			
 			delete dataPrevious;
 		}
 	};
 	
-	timer.setMyInterval(this, 2000, log, [cores]);
+	this.start = function start() {
+		timer.setMyInterval(me, 2000, log, [cores]);
+	};
 };
 
 util.inherits(Cpu, events.EventEmitter);

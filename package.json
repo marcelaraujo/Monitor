@@ -16,6 +16,7 @@
     "jade": "*",
     "hiredis": "*",
     "redis": "*",
-    "socket.io": "*"
+    "socket.io": "*",
+    "node-uuid": "1.4.x"
   }
 }

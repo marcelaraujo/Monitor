@@ -10,21 +10,16 @@ var express = require('express'),
     redis = require('redis'),
 	cluster = require("cluster"),
 	socketio = require('socket.io'),
-	redisStore = require('socket.io/lib/stores/redis');
+	redisStore = require('socket.io/lib/stores/redis'),
+	cpu = require('./plugins/cpu.js');
 
 /**
  * Application
  */
 if (cluster.isMaster) {
-
-	var cpu = require('./plugins/cpu.js');
-	var pubServer = redis.createClient();
-	
-	cpu.on('message', function(data) {
-		pubServer.publish("channelLog", JSON.stringify({ id: 'cpu', message: data }) );
-	});
 	
 	var cpuLength = os.cpus().length;
+	var cpuPublisher = redis.createClient();
 	
 	for (var i = 0; i < cpuLength; i++) {
 		var worker = cluster.fork();
@@ -35,32 +30,37 @@ if (cluster.isMaster) {
 		console.log('worker %s died. restart...', worker.pid);
 		cluster.fork();
 	});
-	
+
+	cpu.start();
+	cpu.on('message', function(data) {
+		cpuPublisher.publish("cpu-data", JSON.stringify({ message: data }) );
+	});
+
 } else {
 
 	var app = express();
 	var root = __dirname;
-
-	var db = redis.createClient();
-	
-	var redisPub = redis.createClient();
-	var redisSub = redis.createClient();
-	var redisClient = redis.createClient();
 	
 	app.configure(function() {
 	    app.set('port', process.env.PORT || 3000);
 	    app.set('views', root + '/views');
 	    app.set('view engine', 'jade');
 	    app.use(express.favicon());
-	    //app.use(express.logger('dev'));
+	    //app.use(express.logger( 'default' ));
 	    app.use(express.bodyParser());
 	    app.use(express.cookieParser());
 	    app.use(express.cookieSession({
-	        secret: 'j089asjd09a8sjd98asjd908sjad7h8q7e7qwe97agdasidh3',
+	        key: 'monitor-app',
+	        secret: 'as9d87as89dh9ash9d98h298dh932hx932pklpa',
 	        cookie: {
 	            maxAge: 60 * 60 * 1000
 	        }
 	    }));
+	    app.use(function(req, res, next) {
+	    	res.setHeader('X-Powered-By', 'MonitorApp');
+	    	//res.removeHeader('X-Powered-By');
+	    	next();
+	    });
 	    app.use(express.methodOverride());
 	    app.use(express.static(path.join(root, 'public')));
 	    app.use(app.router);
@@ -72,38 +72,60 @@ if (cluster.isMaster) {
 	});
 	
 	app.get('/', routes.index);
-	app.get('/users', user.list);
 	
-	var server = http.createServer(app).listen(app.get('port'), function() {
-	    console.log("Express server listening on port " + app.get('port'));
+	var port = app.get('port');
+	var server = http.createServer(app).listen(port, function() {
+	    console.log("Express server listening on port " + port);
 	});
+	
+	var db = redis.createClient();
+	
+	var redisPub = redis.createClient();
+	var redisSub = redis.createClient();
+	var redisClient = redis.createClient();
 	
 	var io = socketio.listen(server);
 	
-	io.enable('browser client minification');
-	io.enable('browser client etag');
-	io.enable('browser client gzip');
+	io.configure(function() {
 	
-	io.set('log level', 0);
-	io.set('store', new redisStore({
-		redisPub: redisPub,
-		redisSub: redisSub,
-		redisClient : redisClient
-	}));
-	
-	io.sockets.on('connection', function (socket) {
+		io.enable('browser client minification');
+		io.enable('browser client etag');
+		io.enable('browser client gzip');
 		
-		var channelLogClient = redis.createClient();
+		io.set('log level', 0);
 		
-		channelLogClient.subscribe("channelLog");
-		channelLogClient.on("message", function(channel, message) {
-			socket.emit('log', message );
+		io.set('store', new redisStore({
+			redisPub: redisPub,
+			redisSub: redisSub,
+			redisClient : redisClient
+		}));
+		
+		io.sockets.on('connection', function (socket) {
+			
+			var cpuSubscriber = redis.createClient();
+			
+			cpuSubscriber.subscribe("cpu-data");
+			cpuSubscriber.on("message", function(channel, message) {
+				socket.emit('cpu-data', message );
+			});
+			
+			socket.on("disconnect", function() {
+				cpuSubscriber.unsubscribe("cpu-data");
+				cpuSubscriber.quit();
+				delete cpuSubscriber;
+			});
 		});
 		
-		socket.on("disconnect", function() {
-			channelLogClient.unsubscribe("channelLog");
-			channelLogClient.quit();
-			delete channelLogClient;
+		/**
+		 *Socket.IO Authorization
+		 */
+		io.set('authorization', function(handshakeData, callback) {
+			if (handshakeData.xdomain) {
+	            callback('Cross-domain connections are not allowed', false);
+	        } else {
+	            callback(null, true);
+	        }
 		});
 	});
+
 }

@@ -51,15 +51,17 @@ var Cpu = function( interval ) {
 			
 			for(var i = 0, l = dataPrevious.length; i < l; i++) {
 				
-				var p = {}, totalDiff = dataLast[i]['total'] - dataPrevious[i]['total'];
+				var p = { 'total' : 0 }, totalDiff = dataLast[i]['total'] - dataPrevious[i]['total'];
 				
 				for(var cpu in dataLast[i]) {
-					if( typeof( dataLast[i][cpu] ) == 'number' && 'total' != cpu ) {
-						p[cpu] = parseDouble( ( (1000 * ( dataLast[i][cpu] - dataPrevious[i][cpu] ) / totalDiff ) / 10) ).toFixed(2);
+					if( typeof( dataLast[i][cpu] ) == 'number' && ( 'total' != cpu && 'idle' != cpu ) ) {
+						p['total'] += parseDouble( ( (1000 * ( dataLast[i][cpu] - dataPrevious[i][cpu] ) / totalDiff ) / 10) );
 					} else if( 'name' == cpu) {
 						p['name'] = dataLast[i]['name'];
 					}
 				}
+				
+				p['total'] = p['total'].toFixed(2);
 				
 				out.push( p );
 			}
@@ -71,7 +73,7 @@ var Cpu = function( interval ) {
 	};
 	
 	this.start = function start() {
-		timer.setMyInterval(me, 2000, log, [cores]);
+		timer.setMyInterval(me, 1000, log, [cores]);
 	};
 };
 

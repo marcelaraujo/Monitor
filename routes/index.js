@@ -3,9 +3,10 @@
  */
 exports.index = function(req, res) {
 	res.render('index', {
-		title: 'Express',
+		title: 'Server Monitor Status',
 		ip: req.ip,
-		baseUrl: req.headers.host
+		baseUrl: req.headers.host,
+		views: req.session.views
 	});
 };
 

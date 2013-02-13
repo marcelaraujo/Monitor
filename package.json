@@ -17,6 +17,7 @@
     "hiredis": "*",
     "redis": "*",
     "socket.io": "*",
+    "connect-redis": "*",
     "node-uuid": "1.4.x"
   }
 }

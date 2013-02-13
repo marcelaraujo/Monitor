@@ -52,6 +52,13 @@
 	    		chartCpu.series[0].setData(values);
 	    	}
 		});
+		
+		socket.on('log-data', function(data) {
+			var data = $.parseJSON(data);
+	    	if( data.message != undefined ) {
+	    		console.log( data.message );
+	    	}
+		});
     });
 
 }(window.jQuery);

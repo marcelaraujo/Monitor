@@ -1,40 +1,18 @@
 doctype 5
 //if lt IE 7
-	html(class="no-js lt-ie9 lt-ie8 lt-ie7", lang="en")
+	html(class="no-js lt-ie9 lt-ie8 lt-ie7", lang="en", ng-app="myApp")
 //if IE 7
-	html(class="no-js lt-ie9 lt-ie8", lang="en")
+	html(class="no-js lt-ie9 lt-ie8", lang="en", ng-app="myApp")
 //if IE 8
-	html(class="no-js lt-ie9", lang="en")
+	html(class="no-js lt-ie9", lang="en", ng-app="myApp")
 // [if gt IE 8] <!
-html(class="no-js", lang="en")
+html(class="no-js", lang="en", ng-app="myApp")
 	// <![endif]
-	head
 
-		title= title
+	include includes/header
 
-		meta(charset="utf-8")
-		meta(name="description", content="")
-		meta(name="author", content="")
-		meta(name="HandheldFriendly", content="True")
-		meta(name="MobileOptimized", content="320")
-		meta(name="apple-mobile-web-app-capable", content="yes")
-		meta(name="apple-mobile-web-app-status-bar-style", content="black")
-		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
-		meta(name="apple-mobile-web-app-capable", content="yes")
-
-		link(rel="stylesheet", href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,800")
-		link(rel="stylesheet", href="/resources/css/font-awesome.css")
-		//if IE 7
-			link(rel="stylesheet", href="/resources/css/font-awesome-ie7.css")
-		link(rel="stylesheet", href="/resources/css/bootstrap.min.css")
-		link(rel="stylesheet", href="/resources/css/bootstrap-responsive.min.css")
-		link(rel="stylesheet", href="/resources/css/application.css")
-
-		script(type="text/javascript", charset="utf-8", src="/resources/js/modernizr-2.6.2.min.js")
-		script(type="text/javascript", charset="utf-8")
-			var baseUrl = "http://#{baseUrl}";
 	body
-		div#wrapper
+		div#wrapper(ng-controller='AppCtrl')
 			div#header
 				div.container
 					a.brand(href="http://#{baseUrl}") Dashboard Admin
@@ -46,23 +24,12 @@ html(class="no-js", lang="en")
 								a(href="http://#{baseUrl}")
 									i.icon-home
 									span Home
+							li.nav-icon
+								a(href="/log")
+									i.icon-list-alt
+									span Logs
 			div#content
 				div.container
 					block content
-		div#footer
-			div.container
-				div.row
-					div.span6
-						| &copy;2012&nbsp;
-						a(href="http://#{baseUrl}") Marcel Araujo
-						| &nbsp;all rights reserved.
-					div#builtby.span6
-						| Built by&nbsp;
-						a(href="http://#{baseUrl}") Marcel Araujo
 
-		script(type="text/javascript", charset="utf-8", src="/socket.io/socket.io.js")
-		script(type="text/javascript", charset="utf-8", src="/resources/js/excanvas.min.js")
-		script(type="text/javascript", charset="utf-8", src="/resources/js/jquery.min.js")
-		script(type="text/javascript", charset="utf-8", src="/resources/js/bootstrap.min.js")
-		script(type="text/javascript", charset="utf-8", src="/resources/js/highcharts.js")
-		script(type="text/javascript", charset="utf-8", src="/resources/js/app.js")
+			include includes/footer

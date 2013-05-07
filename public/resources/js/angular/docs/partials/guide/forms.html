@@ -1,7 +1,7 @@
 <h1><code ng:non-bindable=""></code>
 <span class="hint"></span>
 </h1>
-<div><p>Controls (<code>input</code>, <code>select</code>, <code>textarea</code>) are a way for user to enter data.
+<div><a href="http://github.com/angular/angular.js/edit/master/docs/content/guide/forms.ngdoc" class="improve-docs btn btn-primary">Improve this doc</a><p>Controls (<code>input</code>, <code>select</code>, <code>textarea</code>) are a way for user to enter data.
 Form is a collection of controls for the purpose of grouping related controls together.</p>
 
 <p>Form and controls provide validation services, so that the user can be notified of invalid input.
@@ -312,7 +312,7 @@ However, if you need more flexibility, you can write your own form control as a 
 <p>In order for custom control to work with <code>ngModel</code> and to achieve two-way data-binding it needs to:</p>
 
 <ul>
-<li>implement <code>render</code> method, which is responsible for rendering the data after it passed the <a href="api/ng.directive:ngModel.NgModelController#$formatters"><code>NgModelController#$formatters</code></a>,</li>
+<li>implement <code>$render</code> method, which is responsible for rendering the data after it passed the <a href="api/ng.directive:ngModel.NgModelController#$formatters"><code>NgModelController#$formatters</code></a>,</li>
 <li>call <code>$setViewValue</code> method, whenever the user interacts with the control and model needs to be updated. This is usually done inside a DOM Event listener.</li>
 </ul>
 

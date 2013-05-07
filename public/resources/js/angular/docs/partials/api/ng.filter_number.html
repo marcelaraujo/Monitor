@@ -2,7 +2,7 @@
 <span class="hint">(filter in module <code ng:non-bindable="">ng</code>
 )</span>
 </h1>
-<div><h2 id="Description">Description</h2>
+<div><a href="http://github.com/angular/angular.js/edit/master/src/ng/filter/filters.js" class="improve-docs btn btn-primary">Improve this doc</a><h2 id="Description">Description</h2>
 <div class="description"><p>Formats a number as text.</p>
 
 <p>If the input is not a number an empty string is returned.</p></div>
@@ -25,10 +25,10 @@
 </div>
 <h2 id="Example">Example</h2>
 <div class="example"><h4>Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-198" source-edit-css="" source-edit-js="script.js-197" source-edit-unit="" source-edit-scenario="scenario.js-199"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-196" source-edit-css="" source-edit-js="script.js-195" source-edit-unit="" source-edit-scenario="scenario.js-197"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-198" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-198">
+<pre class="prettyprint linenums" ng-set-text="index.html-196" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-196">
   
   <div ng-controller="Ctrl">
     Enter number: <input ng-model='val'><br>
@@ -39,16 +39,16 @@
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-197"></pre>
-<script type="text/ng-template" id="script.js-197">
+<pre class="prettyprint linenums" ng-set-text="script.js-195"></pre>
+<script type="text/ng-template" id="script.js-195">
     function Ctrl($scope) {
       $scope.val = 1234.56789;
     }
   </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-199"></pre>
-<script type="text/ng-template" id="scenario.js-199">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-197"></pre>
+<script type="text/ng-template" id="scenario.js-197">
   it('should format numbers', function() {
     expect(binding('val | number')).toBe('1,234.568');
     expect(binding('val | number:0')).toBe('1,235');
@@ -64,5 +64,5 @@
 </script>
 </div>
 </div><h4>Demo</h4>
-<div class="well doc-example-live" ng-embed-app="" ng-set-html="index.html-198" ng-eval-javascript="script.js-197"></div></div>
+<div class="well doc-example-live" ng-embed-app="" ng-set-html="index.html-196" ng-eval-javascript="script.js-195"></div></div>
 </div>

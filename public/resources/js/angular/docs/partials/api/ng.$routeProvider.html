@@ -2,7 +2,7 @@
 <span class="hint">(service in module <code ng:non-bindable="">ng</code>
 )</span>
 </h1>
-<div><h2 id="Description">Description</h2>
+<div><a href="http://github.com/angular/angular.js/edit/master/src/ng/route.js" class="improve-docs btn btn-primary">Improve this doc</a><h2 id="Description">Description</h2>
 <div class="description"><p>Used for configuring routes. See <a href="api/ng.$route"><code>$route</code></a> for an example.</p></div>
 <div class="member method"><h2 id="Methods">Methods</h2>
 <ul class="methods"><li><h3 id="otherwise">otherwise(params)</h3>
@@ -37,22 +37,12 @@ match.</p>
 <li><code>controller</code> – <code>{(string|function()=}</code> – Controller fn that should be associated with newly
 created scope or the name of a <a href="api/angular.Module#controller"><code>registered controller</code></a>
 if passed as a string.</li>
-<li><p><code>template</code> – <code>{string=|function()=}</code> – html template as a string or function that returns
-an html template as a string which should be used by <a href="api/ng.directive:ngView"><code>ngView</code></a> or
+<li><code>template</code> – <code>{string=}</code> –  html template as a string that should be used by
+<a href="api/ng.directive:ngView"><code>ngView</code></a> or
 <a href="api/ng.directive:ngInclude"><code>ngInclude</code></a> directives.
-This property takes precedence over <code>templateUrl</code>.</p>
-
-<p>If <code>template</code> is a function, it will be called with the following parameters:</p>
-
-<ul><li><code>{Array.&lt;Object&gt;}</code> - route parameters extracted from the current
-<code>$location.path()</code> by applying the current route</li></ul></li>
-<li><p><code>templateUrl</code> – <code>{string=|function()=}</code> – path or function that returns a path to an html
-template that should be used by <a href="api/ng.directive:ngView"><code>ngView</code></a>.</p>
-
-<p>If <code>templateUrl</code> is a function, it will be called with the following parameters:</p>
-
-<ul><li><code>{Array.&lt;Object&gt;}</code> - route parameters extracted from the current
-<code>$location.path()</code> by applying the current route</li></ul></li>
+this property takes precedence over <code>templateUrl</code>.</li>
+<li><code>templateUrl</code> – <code>{string=}</code> – path to an html template that should be used by
+<a href="api/ng.directive:ngView"><code>ngView</code></a>.</li>
 <li><p><code>resolve</code> - <code>{Object.&lt;string, function&gt;=}</code> - An optional map of dependencies which should
 be injected into the controller. If any of these dependencies are promises, they will be
 resolved and converted to a value before the controller is instantiated and the

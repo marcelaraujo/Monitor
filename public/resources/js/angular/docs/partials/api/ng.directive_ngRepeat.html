@@ -2,7 +2,7 @@
 <span class="hint">(directive in module <code ng:non-bindable="">ng</code>
 )</span>
 </h1>
-<div><h2 id="Description">Description</h2>
+<div><a href="http://github.com/angular/angular.js/edit/master/src/ng/directive/ngRepeat.js" class="improve-docs btn btn-primary">Improve this doc</a><h2 id="Description">Description</h2>
 <div class="description"><p>The <code>ngRepeat</code> directive instantiates a template once per item from a collection. Each template
 instance gets its own scope, where the given loop variable is set to the current collection item,
 and <code>$index</code> is set to the item index or key.</p>
@@ -48,10 +48,10 @@ and <code>expression</code> is the scope expression giving the collection to enu
 <div class="example"><p>This example initializes the scope to a list of names and
 then uses <code>ngRepeat</code> to display every person:
     <h4>Source</h4>
-<div source-edit="" source-edit-deps="angular.js" source-edit-html="index.html-169" source-edit-css="" source-edit-js="" source-edit-unit="" source-edit-scenario="scenario.js-170"></div>
+<div source-edit="" source-edit-deps="angular.js" source-edit-html="index.html-167" source-edit-css="" source-edit-js="" source-edit-unit="" source-edit-scenario="scenario.js-168"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-169" ng-html-wrap=" angular.js"></pre>
-<script type="text/ng-template" id="index.html-169">
+<pre class="prettyprint linenums" ng-set-text="index.html-167" ng-html-wrap=" angular.js"></pre>
+<script type="text/ng-template" id="index.html-167">
         <div ng-init="friends = [{name:'John', age:25}, {name:'Mary', age:28}]">
           I have {{friends.length}} friends. They are:
           <ul>
@@ -63,8 +63,8 @@ then uses <code>ngRepeat</code> to display every person:
       </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-170"></pre>
-<script type="text/ng-template" id="scenario.js-170">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-168"></pre>
+<script type="text/ng-template" id="scenario.js-168">
          it('should check ng-repeat', function() {
            var r = using('.doc-example-live').repeater('ul li');
            expect(r.count()).toBe(2);
@@ -74,5 +74,5 @@ then uses <code>ngRepeat</code> to display every person:
       </script>
 </div>
 </div><h4>Demo</h4>
-<div class="well doc-example-live" ng-embed-app="" ng-set-html="index.html-169" ng-eval-javascript=""></div></div>
+<div class="well doc-example-live" ng-embed-app="" ng-set-html="index.html-167" ng-eval-javascript=""></div></div>
 </div>

@@ -2,7 +2,7 @@
 <span class="hint">(service in module <code ng:non-bindable="">ng</code>
 )</span>
 </h1>
-<div><h2 id="Description">Description</h2>
+<div><a href="http://github.com/angular/angular.js/edit/master/src/ng/http.js" class="improve-docs btn btn-primary">Improve this doc</a><h2 id="Description">Description</h2>
 <div class="description"><p>The <code>$http</code> service is a core Angular service that facilitates communication with the remote
 HTTP servers via browser's <a href="https://developer.mozilla.org/en/xmlhttprequest">XMLHttpRequest</a> object or via <a href="http://en.wikipedia.org/wiki/JSONP">JSONP</a>.</p>
 
@@ -73,7 +73,8 @@ object, which currently contains this default configuration:</p>
 
 <ul>
 <li><code>$httpProvider.defaults.headers.common</code> (headers that are common for all requests):
-<ul><li><code>Accept: application/json, text/plain, * / *</code></li></ul></li>
+<ul><li><code>Accept: application/json, text/plain, * / *</code></li>
+<li><code>X-Requested-With: XMLHttpRequest</code></li></ul></li>
 <li><code>$httpProvider.defaults.headers.post</code>: (header defaults for HTTP POST requests)
 <ul><li><code>Content-Type: application/json</code></li></ul></li>
 <li><code>$httpProvider.defaults.headers.put</code> (header defaults for HTTP PUT requests)
@@ -107,10 +108,14 @@ JSON format.</li>
 <li>if json response is detected, deserialize it using a JSON parser</li>
 </ul>
 
-<p>To override these transformation locally, specify transform functions as <code>transformRequest</code>
-and/or <code>transformResponse</code> properties of the config object. To globally override the default
-transforms, override the <code>$httpProvider.defaults.transformRequest</code> and
-<code>$httpProvider.defaults.transformResponse</code> properties of the <code>$httpProvider</code>.</p>
+<p>To globally augment or override the default transforms, modify the <code>$httpProvider.defaults.transformRequest</code> and
+<code>$httpProvider.defaults.transformResponse</code> properties of the <code>$httpProvider</code>. These properties are by default an
+array of transform functions, which allows you to <code>push</code> or <code>unshift</code> a new transformation function into the
+transformation chain. You can also decide to completely override any default transformations by assigning your
+transformation functions to these properties directly without the array wrapper.</p>
+
+<p>Similarly, to locally override the request/response transforms, augment the <code>transformRequest</code> and/or
+<code>transformResponse</code> properties of the config object passed into <code>$http</code>.</p>
 
 <h3>Caching</h3>
 
@@ -207,7 +212,7 @@ an unauthorized site can gain your user's private data. Angular provides followi
 to counter XSRF. When performing XHR requests, the $http service reads a token from a cookie
 called <code>XSRF-TOKEN</code> and sets it as the HTTP header <code>X-XSRF-TOKEN</code>. Since only JavaScript that
 runs on your domain could read the cookie, your server can be assured that the XHR came from
-JavaScript running on your domain. The header will not be set for cross-domain requests.</p>
+JavaScript running on your domain.</p>
 
 <p>To take advantage of this, your server needs to set a token in a JavaScript readable session
 cookie called <code>XSRF-TOKEN</code> on first HTTP GET request. On subsequent non-GET requests the
@@ -257,7 +262,6 @@ caching.</li>
 <li><strong>timeout</strong> – <code>{number}</code> – timeout in milliseconds.</li>
 <li><strong>withCredentials</strong> - <code>{boolean}</code> - whether to to set the <code>withCredentials</code> flag on the
 XHR object. See <a href="https://developer.mozilla.org/en/http_access_control#section_5">requests with credentials</a> for more information.</li>
-<li><strong>responseType</strong> - <code>{string}</code> - see <a href="https://developer.mozilla.org/en-US/docs/DOM/XMLHttpRequest#responseType">requestType</a>.</li>
 </ul></li>
 </ul>
 <h3 id="Returns">Returns</h3>
@@ -360,7 +364,7 @@ Should contain <code>JSON_CALLBACK</code> string.</p></li>
 <div class="member property"><h2 id="Properties">Properties</h2>
 <ul class="properties"><li><h3 id="defaults">defaults</h3>
 <div class="defaults"><p>Runtime equivalent of the <code>$httpProvider.defaults</code> property. Allows configuration of
-default headers, withCredentials as well as request and response transformations.</p>
+default headers as well as request and response transformations.</p>
 
 <p>See "Setting HTTP Headers" and "Transforming Requests and Responses" sections above.</p></div>
 </li>
@@ -372,10 +376,10 @@ requests. This is primarily meant to be used for debugging purposes.</p></div>
 </div>
 <h2 id="Example">Example</h2>
 <div class="example"><h4>Source</h4>
-<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-210 http-hello.html" source-edit-css="" source-edit-js="script.js-211" source-edit-unit="" source-edit-scenario="scenario.js-212"></div>
+<div source-edit="" source-edit-deps="angular.js script.js" source-edit-html="index.html-208 http-hello.html" source-edit-css="" source-edit-js="script.js-209" source-edit-unit="" source-edit-scenario="scenario.js-210"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-210" ng-html-wrap=" angular.js script.js"></pre>
-<script type="text/ng-template" id="index.html-210">
+<pre class="prettyprint linenums" ng-set-text="index.html-208" ng-html-wrap=" angular.js script.js"></pre>
+<script type="text/ng-template" id="index.html-208">
   <div ng-controller="FetchCtrl">
     <select ng-model="method">
       <option>GET</option>
@@ -398,8 +402,8 @@ requests. This is primarily meant to be used for debugging purposes.</p></div>
 </script>
 </div>
 <div class="tab-pane" title="script.js">
-<pre class="prettyprint linenums" ng-set-text="script.js-211"></pre>
-<script type="text/ng-template" id="script.js-211">
+<pre class="prettyprint linenums" ng-set-text="script.js-209"></pre>
+<script type="text/ng-template" id="script.js-209">
   function FetchCtrl($scope, $http, $templateCache) {
     $scope.method = 'GET';
     $scope.url = 'http-hello.html';
@@ -427,8 +431,8 @@ requests. This is primarily meant to be used for debugging purposes.</p></div>
 </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-212"></pre>
-<script type="text/ng-template" id="scenario.js-212">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-210"></pre>
+<script type="text/ng-template" id="scenario.js-210">
   it('should make an xhr GET request', function() {
     element(':button:contains("Sample GET")').click();
     element(':button:contains("fetch")').click();
@@ -453,5 +457,5 @@ requests. This is primarily meant to be used for debugging purposes.</p></div>
 </script>
 </div>
 </div><h4>Demo</h4>
-<div class="well doc-example-live" ng-embed-app="" ng-set-html="index.html-210" ng-eval-javascript="script.js-211"></div></div>
+<div class="well doc-example-live" ng-embed-app="" ng-set-html="index.html-208" ng-eval-javascript="script.js-209"></div></div>
 </div>

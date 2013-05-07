@@ -2,7 +2,7 @@
 <span class="hint">(directive in module <code ng:non-bindable="">ng</code>
 )</span>
 </h1>
-<div><h2 id="Description">Description</h2>
+<div><a href="http://github.com/angular/angular.js/edit/master/src/ng/directive/ngCloak.js" class="improve-docs btn btn-primary">Improve this doc</a><h2 id="Description">Description</h2>
 <div class="description"><p>The <code>ngCloak</code> directive is used to prevent the Angular html template from being briefly
 displayed by the browser in its raw (uncompiled) form while your application is loading. Use this
 directive to avoid the undesirable flicker effect caused by the html template display.</p>
@@ -14,7 +14,7 @@ prefered in order to benefit from progressive rendering of the browser view.</p>
  <code>angular.min.js</code> files. Following is the css rule:</p>
 
 <pre class="prettyprint linenums">
-[ng\:cloak], [ng-cloak], .ng-cloak {
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none;
 }
 </pre>
@@ -41,17 +41,17 @@ as class<pre class="prettyprint linenums">&lt;ANY class="ng-cloak"&gt;
 </div>
 <h2 id="Example">Example</h2>
 <div class="example"><h4>Source</h4>
-<div source-edit="" source-edit-deps="angular.js" source-edit-html="index.html-149" source-edit-css="" source-edit-js="" source-edit-unit="" source-edit-scenario="scenario.js-150"></div>
+<div source-edit="" source-edit-deps="angular.js" source-edit-html="index.html-147" source-edit-css="" source-edit-js="" source-edit-unit="" source-edit-scenario="scenario.js-148"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-149" ng-html-wrap=" angular.js"></pre>
-<script type="text/ng-template" id="index.html-149">
+<pre class="prettyprint linenums" ng-set-text="index.html-147" ng-html-wrap=" angular.js"></pre>
+<script type="text/ng-template" id="index.html-147">
    <div id="template1" ng-cloak>{{ 'hello' }}</div>
    <div id="template2" ng-cloak class="ng-cloak">{{ 'hello IE7' }}</div>
 </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-150"></pre>
-<script type="text/ng-template" id="scenario.js-150">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-148"></pre>
+<script type="text/ng-template" id="scenario.js-148">
   it('should remove the template directive and css class', function() {
     expect(element('.doc-example-live #template1').attr('ng-cloak')).
       not().toBeDefined();
@@ -61,5 +61,5 @@ as class<pre class="prettyprint linenums">&lt;ANY class="ng-cloak"&gt;
 </script>
 </div>
 </div><h4>Demo</h4>
-<div class="well doc-example-live" ng-embed-app="" ng-set-html="index.html-149" ng-eval-javascript=""></div></div>
+<div class="well doc-example-live" ng-embed-app="" ng-set-html="index.html-147" ng-eval-javascript=""></div></div>
 </div>

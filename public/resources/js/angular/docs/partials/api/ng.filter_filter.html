@@ -2,7 +2,7 @@
 <span class="hint">(filter in module <code ng:non-bindable="">ng</code>
 )</span>
 </h1>
-<div><h2 id="Description">Description</h2>
+<div><a href="http://github.com/angular/angular.js/edit/master/src/ng/filter/filter.js" class="improve-docs btn btn-primary">Improve this doc</a><h2 id="Description">Description</h2>
 <div class="description"><p>Selects a subset of items from <code>array</code> and returns it as a new array.</p>
 
 <p>Note: This function is used to augment the <code>Array</code> type in Angular expressions. See
@@ -41,10 +41,10 @@ the predicate returned true for.</p></li>
 </div>
 <h2 id="Example">Example</h2>
 <div class="example"><h4>Source</h4>
-<div source-edit="" source-edit-deps="angular.js" source-edit-html="index.html-192" source-edit-css="" source-edit-js="" source-edit-unit="" source-edit-scenario="scenario.js-193"></div>
+<div source-edit="" source-edit-deps="angular.js" source-edit-html="index.html-190" source-edit-css="" source-edit-js="" source-edit-unit="" source-edit-scenario="scenario.js-191"></div>
 <div class="tabbable"><div class="tab-pane" title="index.html">
-<pre class="prettyprint linenums" ng-set-text="index.html-192" ng-html-wrap=" angular.js"></pre>
-<script type="text/ng-template" id="index.html-192">
+<pre class="prettyprint linenums" ng-set-text="index.html-190" ng-html-wrap=" angular.js"></pre>
+<script type="text/ng-template" id="index.html-190">
   <div ng-init="friends = [{name:'John', phone:'555-1276'},
                            {name:'Mary', phone:'800-BIG-MARY'},
                            {name:'Mike', phone:'555-4321'},
@@ -53,28 +53,28 @@ the predicate returned true for.</p></li>
 
   Search: <input ng-model="searchText">
   <table id="searchTextResults">
-    <tr><th>Name</th><th>Phone</th><tr>
+    <tr><th>Name</th><th>Phone</th></tr>
     <tr ng-repeat="friend in friends | filter:searchText">
       <td>{{friend.name}}</td>
       <td>{{friend.phone}}</td>
-    <tr>
+    </tr>
   </table>
   <hr>
   Any: <input ng-model="search.$"> <br>
   Name only <input ng-model="search.name"><br>
   Phone only <input ng-model="search.phone"å><br>
   <table id="searchObjResults">
-    <tr><th>Name</th><th>Phone</th><tr>
+    <tr><th>Name</th><th>Phone</th></tr>
     <tr ng-repeat="friend in friends | filter:search">
       <td>{{friend.name}}</td>
       <td>{{friend.phone}}</td>
-    <tr>
+    </tr>
   </table>
 </script>
 </div>
 <div class="tab-pane" title="End to end test">
-<pre class="prettyprint linenums" ng-set-text="scenario.js-193"></pre>
-<script type="text/ng-template" id="scenario.js-193">
+<pre class="prettyprint linenums" ng-set-text="scenario.js-191"></pre>
+<script type="text/ng-template" id="scenario.js-191">
   it('should search across all fields when filtering with a string', function() {
     input('searchText').enter('m');
     expect(repeater('#searchTextResults tr', 'friend in friends').column('friend.name')).
@@ -93,5 +93,5 @@ the predicate returned true for.</p></li>
 </script>
 </div>
 </div><h4>Demo</h4>
-<div class="well doc-example-live" ng-embed-app="" ng-set-html="index.html-192" ng-eval-javascript=""></div></div>
+<div class="well doc-example-live" ng-embed-app="" ng-set-html="index.html-190" ng-eval-javascript=""></div></div>
 </div>

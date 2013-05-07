@@ -1,7 +1,7 @@
 <h1><code ng:non-bindable=""></code>
 <span class="hint"></span>
 </h1>
-<div><p>Directives are a way to teach HTML new tricks. During DOM compilation directives are matched
+<div><a href="http://github.com/angular/angular.js/edit/master/docs/content/guide/directive.ngdoc" class="improve-docs btn btn-primary">Improve this doc</a><p>Directives are a way to teach HTML new tricks. During DOM compilation directives are matched
 against the HTML and executed. This allows directives to register behavior, or transform the DOM.</p>
 
 <p>Angular comes with a built in set of directives which are useful for building web applications but
@@ -37,11 +37,11 @@ the following example.</p>
    
    <div ng-controller="Ctrl1">
      Hello <input ng-model='name'> <hr/>
-     &ltspan ng:bind="name"&gt <span ng:bind="name"></span> <br/>
-     &ltspan ng_bind="name"&gt <span ng_bind="name"></span> <br/>
-     &ltspan ng-bind="name"&gt <span ng-bind="name"></span> <br/>
-     &ltspan data-ng-bind="name"&gt <span data-ng-bind="name"></span> <br/>
-     &ltspan x-ng-bind="name"&gt <span x-ng-bind="name"></span> <br/>
+     &lt;span ng:bind="name"&gt; <span ng:bind="name"></span> <br/>
+     &lt;span ng_bind="name"&gt; <span ng_bind="name"></span> <br/>
+     &lt;span ng-bind="name"&gt; <span ng-bind="name"></span> <br/>
+     &lt;span data-ng-bind="name"&gt; <span data-ng-bind="name"></span> <br/>
+     &lt;span x-ng-bind="name"&gt; <span x-ng-bind="name"></span> <br/>
    </div>
   </script>
 </div>
@@ -100,7 +100,7 @@ scope and the DOM. A change in the scope is reflected in the DOM.</p></li>
   var $compile = ...; // injected into your code
   var scope = ...;
 
-  var html = '&lt;div ng-bind='exp'&gt;&lt;/div&gt;';
+  var html = '&lt;div ng-bind="exp"&gt;&lt;/div&gt;';
 
   // Step 1: parse HTML into DOM element
   var template = angular.element(html);
@@ -219,7 +219,7 @@ as to copy content into the DOM from the scope.</p></li>
            }
 
            // listen on DOM destroy (removal) event, and cancel the next UI update
-           // to prevent updating time ofter the DOM element was removed.
+           // to prevent updating time after the DOM element was removed.
            element.bind('$destroy', function() {
              $timeout.cancel(timeoutId);
            });
@@ -355,7 +355,7 @@ each other's behavior. The controller is injectable with the following locals:</
 
 <ul><li><code>$scope</code> - Current scope associated with the element</li>
 <li><code>$element</code> - Current element</li>
-<li><code>$attrs</code> - Current attributes obeject for the element</li>
+<li><code>$attrs</code> - Current attributes object for the element</li>
 <li><code>$transclude</code> - A transclude linking function pre-bound to the correct transclusion scope:
 <code>function(cloneLinkingFn)</code>.</li></ul></li>
 <li><p><code>require</code> - Require another controller be passed into current directive linking function. The
@@ -373,8 +373,8 @@ declaration style. If omitted directives are allowed on attributes only.</p>
 <li><code>C</code> - Class: <code>&lt;div class="my-directive: exp;"&gt;&lt;/div&gt;</code></li>
 <li><code>M</code> - Comment: <code>&lt;!-- directive: my-directive exp --&gt;</code></li></ul></li>
 <li><p><code>template</code> - replace the current element with the contents of the HTML. The replacement process
-migrates all of the attributes / classes from the old element to the new one. See Creating
-Widgets section below for more information.</p></li>
+migrates all of the attributes / classes from the old element to the new one. See the
+<a href="guide/directive#Components">Creating Components</a> section below for more information.</p></li>
 <li><p><code>templateUrl</code> - Same as <code>template</code> but the template is loaded from the specified URL. Because
 the template loading is asynchronous the compilation/linking is suspended until the template
 is loaded.</p></li>
@@ -584,6 +584,8 @@ scope: {
 restrict: 'E',
 replace: true
 </pre>
+
+<p><a name="Components"></a></p>
 
 <h2>Creating Components</h2>
 

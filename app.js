@@ -2,8 +2,6 @@
  * Module dependencies.
  */
 var express = require('express'),
-    //RedisStore = require('connect-redis')(express),
-    //MongoStore = require('connect-mongo')(express),
     routes = require('./routes'),
     http = require('http'),
     path = require('path'),
@@ -89,29 +87,26 @@ if (cluster.isMaster) {
     });
 
     app.get('/', routes.index);
-    //app.get('/log', routes.log);
 
     var port = app.get('port');
     var server = http.createServer(app).listen(port, function() {
         console.log("Express server listening on port " + port);
     });
 
-    var db = redis.createClient();
-
-    var redisPub = redis.createClient();
-    var redisSub = redis.createClient();
-    var redisClient = redis.createClient();
-
     var io = socketio.listen(server);
 
     io.configure(function() {
+    
+    	var db = redis.createClient();
+	    var redisPub = redis.createClient();
+	    var redisSub = redis.createClient();
+	    var redisClient = redis.createClient();
 
         io.enable('browser client minification');
         io.enable('browser client etag');
         io.enable('browser client gzip');
 
         io.set('log level', 0);
-
         io.set('store', new redisStore({
             redisPub: redisPub,
             redisSub: redisSub,

@@ -12,24 +12,25 @@ html(class="no-js", lang="en", ng-app="myApp")
 	include includes/header
 
 	body
-		div#wrapper(ng-controller='AppCtrl')
+		div#wrapper(ng-controller='ApplicationController')
 			div#header
 				div.container
-					a.brand(href="http://#{baseUrl}") Dashboard Admin
-					a.btn-navbar(href="javascript:return false;", data-toggle="collapse", data-target=".nav-collapse")
+					a.brand(ng-href="http://#{baseUrl}") Dashboard Admin
+					a.btn-navbar(ng-href="javascript:return false;", data-toggle="collapse", data-target=".nav-collapse")
 						i.icon-reorder
 					div.nav-collapse
 						ul#main-nav.nav.pull-right
 							li.nav-icon.active
-								a(href="http://#{baseUrl}")
+								a(href="/")
 									i.icon-home
 									span Home
 							li.nav-icon
-								a(href="/log")
+								a(href="logs")
 									i.icon-list-alt
 									span Logs
 			div#content
 				div.container
+					div {{name}}
 					block content
 
 			include includes/footer

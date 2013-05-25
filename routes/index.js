@@ -1,7 +1,7 @@
 /*
  * GET home page.
  */
-exports.index = function(req, res) {
+exports.indexBlock = function(req, res) {
     res.render('blocks/index', {
         title: 'Home',
         ip: req.ip,
@@ -10,10 +10,11 @@ exports.index = function(req, res) {
 };
 
 /*
- * GET log page.
+ * GET partials pages
  */
-exports.log = function(req, res) {
-	res.render('blocks/log', {
+exports.partials = function (req, res) {
+	var name = req.params.name;
+	res.render('partials/' + name, {
         title: 'Log',
         ip: req.ip,
         baseUrl: req.headers.host

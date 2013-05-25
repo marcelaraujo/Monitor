@@ -74,7 +74,10 @@ if (cluster.isMaster) {
         app.use(express.errorHandler());
     });
 
-    app.get('/', routes.index);
+    app.get('/', routes.indexBlock);
+    //app.get('*', routes.indexBlock);
+    app.get('/partials/:name', routes.partials);
+    
 
     var port = app.get('port');
     var server = http.createServer(app).listen(port, function() {
@@ -107,11 +110,17 @@ if (cluster.isMaster) {
             subscriber.on("message", function(channel, message) {
                 socket.emit('cpu-data', message );
             });
+            
+            var log = redis.createClient();
+            log.subscribe("log");
+            log.on("message", function(channel, message) {
+            	socket.emit('log', message );
+            });
 
             socket.on("disconnect", function() {
-                cpuSubscriber.unsubscribe("cpu-data");
-                cpuSubscriber.quit();
-                delete cpuSubscriber;
+                subscriber.unsubscribe("cpu-data");
+                subscriber.quit();
+                delete subscriber;
             });
         });
 

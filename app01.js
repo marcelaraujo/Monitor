@@ -42,7 +42,7 @@ if (cluster.isMaster) {
     /**
      * Log file monitor
      */
-    var tail = new Tail("/var/log/httpd/marcel.dev.inphonex.com-access_log");
+    var tail = new Tail("/var/log/httpd/marcel.dev.com-access_log");
 	tail.on('data', function(data) {
     	publisherData.publish("log", data);
     });
